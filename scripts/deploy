@@ -1,9 +1,10 @@
 !#/bin/sh
 
 ssh dev@188.166.68.128 <<EOF
+	cd ~/hello-jenkins
 	docker stop web
 	docker rm web
-	docker run -d -p 80:5000 --name web hello-jenkins git pull
-	docker exec web node app.js
+	docker build -t hello-jenkins .
+	docker run -d -p 80:5000 --name web --rm hello-jenkins node app.js
 	exit
 EOF
