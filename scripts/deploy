@@ -4,7 +4,6 @@ ssh dev@188.166.68.128 <<EOF
 	cd ~/hello-jenkins
 	docker stop web
 	docker rm web
-	docker build -t hello-jenkins .
 	docker run -d -p 80:5000 --name web hello-jenkins
 	exit
 EOF
