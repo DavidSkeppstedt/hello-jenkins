@@ -3,6 +3,7 @@
 ssh dev@188.166.68.128 <<EOF
 	docker stop web
 	docker rm web
-	docker run -d -p 80:5000 --name web hello-jenkins ./scripts/run
+	docker run -d -p 80:5000 --name web hello-jenkins git pull
+	docker exec node app.js
 	exit
 EOF
